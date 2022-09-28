@@ -1,7 +1,7 @@
-import useCounter from "../hooks/useCounter";
+import useActions from "../hooks/useActions";
 
 const Buttons = () => {
-  const [, actions] = useCounter();
+  const actions = useActions();
 
   return (
     <div>

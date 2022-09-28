@@ -1,4 +1,5 @@
 import { FC, useMemo, useState } from "react";
+import { ActionContext } from "../../context/actionContext";
 import { CounterContext } from "../../context/counterContext";
 
 const CounterProvider: FC = ({ children }) => {
@@ -16,10 +17,12 @@ const CounterProvider: FC = ({ children }) => {
     []
   );
 
-  const value = useMemo(() => [counter, actions], [counter, actions]);
-
   return (
-    <CounterContext.Provider value={value}>{children}</CounterContext.Provider>
+    <ActionContext.Provider value={actions}>
+      <CounterContext.Provider value={counter}>
+        {children}
+      </CounterContext.Provider>
+    </ActionContext.Provider>
   );
 };
 
